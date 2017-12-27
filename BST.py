@@ -79,17 +79,76 @@ class BSTtree:
             print("sorry, you value has nor been found yet")
 
     def inorder(self,rootnode):
-        if rootnode is not None:
-            inorder(rootnode.left)
-
-    def preorder(self):
-        self._preorder(self.root)
-
-    def _preorder(self,rootnode):
+        self._inorder(rootnode)
+    def _inorder(self,rootnode):
+        if not rootnode:
+            return
+        self._inorder(rootnode.left)
         print(rootnode.key)
+        self._inorder(rootnode.right)
 
-    def subtree(self,rootnode):
-        pass
+    def preorder(self,rootnode):
+        self._preorder(rootnode)
+    def _preorder(self,rootnode):
+        if not rootnode:
+            return
+        print(rootnode.key)
+        self._preorder(rootnode.left)
+        self._preorder(rootnode.right)
+
+    def postorder(self,rootnode):
+        self._postorder(rootnode)
+    def _postorder(self,rootnode):
+        if not rootnode:
+            return
+        self._preorder(rootnode.left)
+        self._postorder(rootnode.right)
+        print(rootnode.key)
+    def height(self,rootnode):
+        self._height(rootnode)
+    def _height(self,rootnode):
+        if not rootnode:
+            return -1
+        left_height=self._height(rootnode.left)
+        right_height=self._height(rootnode.right)
+        return 1+left_height+right_height
+
+    def count(self):
+        return self._count(self.root)
+    def _count(self,root):
+        if not root:
+            return 0
+        return 1+self._count(root.left)+self._count(root.right)
+
+    def main(self):
+        import random
+        test=BSTtree()
+        for i in random.sample([j for j in range(1,100)],5):
+            test.insert(i)
+        print("insert:")
+        test.insert(78)
+        test.insert(101)
+        test.insert(74)
+
+        test.preorder(test.root)
+        test.inorder(test.root)
+        test.postorder(test.root)
+
+        print("height:")
+        print(test.height(test.root))
+        print("min")
+        print(test.min(test.root))
+
+        print("delete:")
+        test.delete(101)
+        test.delete(12)
+
+    if __name__=='__main__':
+        main()
+
+
+
+
 
 
 
