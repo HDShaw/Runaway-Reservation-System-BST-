@@ -1,15 +1,15 @@
-class tree_node:
-    def _init_(self,key = None, left = None, right = None):
+class tree_node(object):
+    def __init__(self,key = None, left = None, right = None):
         self.key=key
         self.left=left
         self.right=right
-class binary_search_tree:
-    def _init_(self,root=None):
+class binary_search_tree(object):
+    def __init__(self,root=None):
         self.root=root
 
     def insert(self,key):
         """recursion way"""
-        return self._insert(self.root,key)
+        self.root=self._insert(self.root, key)
     def _insert(self,root,key):
         if not root:
             root=tree_node(key)
@@ -27,10 +27,11 @@ class binary_search_tree:
     def _delete(self,root,key):
         if not root:
             print("the bianry search tree does not exit")
+            return
         else:
-            if key<root.left:
+            if key<root.key:
                 root.left=self._delete(root.left,key)
-            elif key>root.right:
+            elif key>root.key:
                 root.right=self._delete(root.right,key)
             elif root.left and root.right:
                 right_min=self._find_min(root)
@@ -60,6 +61,7 @@ class binary_search_tree:
     def _find(self,root,key):
         if not root:
             print("sorry, the node is not found")
+            return
         if key<root.key:
             return self._find(root.left,key)
         elif key>root.key:
@@ -116,6 +118,7 @@ class binary_search_tree:
 def main():
     import random
     test = binary_search_tree()
+    print(type(test))
     for i in random.sample([j for j in range(1, 100)], 5):
         test.insert(i)
     print('insert: ')
