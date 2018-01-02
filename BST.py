@@ -143,7 +143,7 @@ class BSTtree:
         test.delete(101)
         test.delete(12)
 
-    if __name__=='__main__':
+    if __name__ == '__main__':
         main()
 
 
