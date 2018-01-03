@@ -98,7 +98,7 @@ def main():
     test.postorder()
 
     test.find(71)
-
+    test.find(92)
     test.find(78)
 
     print('height: ', test.height())
