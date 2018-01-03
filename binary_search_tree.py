@@ -130,7 +130,7 @@ def main():
     test.inorder()
     test.postorder()
     print('height: ', test.height())
-    print('count: ', test.subtree())
+    print('subtree: ', test.subtree())
     print('min: ', test.find_min().key)
     print('max: ', test.find_max().key)
 
